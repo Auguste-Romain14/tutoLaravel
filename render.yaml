@@ -4,7 +4,8 @@ services:
     env: docker
     plan: free
     region: oregon
-    dockerfilePath: ./docker/php/Dockerfile
+    # dockerfilePath: ./docker/php/Dockerfile
+    dockerfilePath: docker\php\Dockerfile
     buildCommand: ""
     startCommand: "php artisan serve --host 0.0.0.0 --port 10000"
     envVars:
