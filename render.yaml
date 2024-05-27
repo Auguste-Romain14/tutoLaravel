@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: laravel-web
+    env: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./docker/php/Dockerfile
+    buildCommand: ""
+    startCommand: "php artisan serve --host 0.0.0.0 --port 10000"
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_KEY
+        fromDatabase: true
+      - key: APP_DEBUG
+        value: false
+      - key: APP_URL
+        value: https://tutolaravel.onrender.com
+      - key: DB_CONNECTION
+        value: mysql
+      - key: DB_HOST
+        fromDatabase: true
+      - key: DB_PORT
+        fromDatabase: true
+      - key: DB_DATABASE
+        fromDatabase: true
+      - key: DB_USERNAME
+        fromDatabase: true
+      - key: DB_PASSWORD
+        fromDatabase: true
+
+databases:
+  - name: laravel-db
+    databaseName: laravel
+    user: laravel
+    password: secret
+    plan: free
+    region: oregon
